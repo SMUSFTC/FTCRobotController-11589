@@ -12,11 +12,13 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 // Most recent result: 1.15m/s
 
 @Autonomous
-public class AUTONOMOUS_SPEED_TEST extends LinearOpMode {
+public class AUTONOMOUS_SPEED_TEST extends LinearOpMode
+{
     DcMotor leftDriveMotor;
     DcMotor rightDriveMotor;
-    @Override
-    public void runOpMode() throws InterruptedException {
+
+    @Override public void runOpMode() throws InterruptedException
+    {
         leftDriveMotor = hardwareMap.dcMotor.get("leftDriveMotor");
         rightDriveMotor = hardwareMap.dcMotor.get("rightDriveMotor");
         leftDriveMotor.setDirection(DcMotorSimple.Direction.REVERSE);

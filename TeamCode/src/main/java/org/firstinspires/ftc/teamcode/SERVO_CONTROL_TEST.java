@@ -10,7 +10,7 @@ import com.qualcomm.robotcore.hardware.Servo;
  * Created by tianne.lee on 10/25/2017.
  */
 
-@TeleOp(name = "Servo_Control_Test", group = "Linear OpMode")
+@TeleOp
 public class SERVO_CONTROL_TEST extends LinearOpMode
 {
     Servo leftArmServo;
@@ -23,15 +23,17 @@ public class SERVO_CONTROL_TEST extends LinearOpMode
         leftArmServo.setDirection(Servo.Direction.REVERSE);
 
         waitForStart();
-
-        rightArmServo.setPosition(0.6);
-        leftArmServo.setPosition(0.6);
+        leftArmServo.setPosition(0);
+        rightArmServo.setPosition(0);
         while (opModeIsActive())
         {
             leftArmServo.setPosition(leftArmServo.getPosition());
-            rightArmServo.setPosition(leftArmServo.getPosition());
-            if (gamepad1.dpad_up) leftArmServo.setPosition(1);
-            else if (gamepad1.dpad_down) leftArmServo.setPosition(0.6);
+            rightArmServo.setPosition(rightArmServo.getPosition());
+            if (gamepad2.x)
+            {
+                leftArmServo.setPosition(-gamepad2.left_stick_y-gamepad2.left_stick_x);
+                rightArmServo.setPosition(-gamepad2.left_stick_y+gamepad2.left_stick_x);
+            }
         }
     }
 }

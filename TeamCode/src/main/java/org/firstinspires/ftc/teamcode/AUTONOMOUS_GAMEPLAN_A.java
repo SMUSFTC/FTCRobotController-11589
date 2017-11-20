@@ -1,16 +1,16 @@
 package org.firstinspires.ftc.teamcode;
 
-import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 /**
- * Created by tianne.lee on 11/18/2017.
+ * Created by Adrian on 2017-11-19.
  */
 
-@Autonomous
-public class AUTONOMOUS_GOTO_SAFE_AREA extends LinearOpMode
+@Disabled
+public class AUTONOMOUS_GAMEPLAN_A extends LinearOpMode
 {
     DcMotor leftDriveMotor;
     DcMotor rightDriveMotor;
@@ -22,9 +22,6 @@ public class AUTONOMOUS_GOTO_SAFE_AREA extends LinearOpMode
         leftDriveMotor.setDirection(DcMotorSimple.Direction.REVERSE);
 
         waitForStart();
-        leftDriveMotor.setPower(1);
-        rightDriveMotor.setPower(1);
-        Thread.sleep((long)((.9/1.15)*1000));
-        //Thread.sleep(782);
+
     }
 }
