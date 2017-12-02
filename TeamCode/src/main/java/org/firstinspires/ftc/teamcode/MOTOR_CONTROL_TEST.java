@@ -36,7 +36,7 @@ public class MOTOR_CONTROL_TEST extends LinearOpMode
 
         waitForStart();
         new Thread(() -> { while (opModeIsActive()) {
-            if (gamepad2.start)
+            /*if (gamepad2.start)
             {
                 float time = 60*59*((-gamepad2.left_stick_y - cachedForkliftPosition)/6080);
                 setCachedForkliftPosition(-gamepad2.left_stick_y);
@@ -48,7 +48,8 @@ public class MOTOR_CONTROL_TEST extends LinearOpMode
                 rightForkliftMotor.setPower(0);
             }
             else if (gamepad2.a) setCachedForkliftPosition(gamepad2.left_stick_y);
-            else if (gamepad2.right_trigger == 1)
+            else */
+            if (gamepad2.right_trigger == 1)
             {
                 leftForkliftMotor.setPower(-gamepad2.left_stick_y*.6);
                 rightForkliftMotor.setPower(leftForkliftMotor.getPower());

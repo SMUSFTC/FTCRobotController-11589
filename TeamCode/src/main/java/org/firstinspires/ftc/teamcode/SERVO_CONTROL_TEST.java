@@ -10,8 +10,7 @@ import com.qualcomm.robotcore.hardware.Servo;
  * Created by tianne.lee on 10/25/2017.
  */
 
-@TeleOp
-public class SERVO_CONTROL_TEST extends LinearOpMode
+@TeleOp public class SERVO_CONTROL_TEST extends LinearOpMode
 {
     Servo leftArmServo;
     Servo rightArmServo;
