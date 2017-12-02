@@ -58,7 +58,7 @@ public class MANUAL_CONTROL extends LinearOpMode
             else if (gamepad2.a) setCachedForkliftPosition(gamepad2.left_stick_y);
             else if (gamepad2.right_trigger == 1)
             {
-                leftForkliftMotor.setPower(-gamepad2.left_stick_y*.6);
+                leftForkliftMotor.setPower(-gamepad2.left_stick_y*.4);
                 rightForkliftMotor.setPower(leftForkliftMotor.getPower());
             }
             else if (gamepad2.x)

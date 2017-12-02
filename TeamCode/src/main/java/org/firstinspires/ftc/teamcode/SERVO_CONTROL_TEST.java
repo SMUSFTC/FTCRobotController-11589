@@ -23,16 +23,16 @@ public class SERVO_CONTROL_TEST extends LinearOpMode
         leftArmServo.setDirection(Servo.Direction.REVERSE);
 
         waitForStart();
-        leftArmServo.setPosition(0);
-        rightArmServo.setPosition(0);
+        leftArmServo.setPosition(-0.5);
+        rightArmServo.setPosition(-0.5);
         while (opModeIsActive())
         {
             leftArmServo.setPosition(leftArmServo.getPosition());
             rightArmServo.setPosition(rightArmServo.getPosition());
             if (gamepad2.x)
             {
-                leftArmServo.setPosition(-gamepad2.left_stick_y-gamepad2.left_stick_x);
-                rightArmServo.setPosition(-gamepad2.left_stick_y+gamepad2.left_stick_x);
+                leftArmServo.setPosition((-gamepad2.left_stick_y + 1) * 0.75 - 1);
+                rightArmServo.setPosition(leftArmServo.getPosition());
             }
         }
     }
