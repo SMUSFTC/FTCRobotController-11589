@@ -48,18 +48,15 @@ public class MOTOR_CONTROL_TEST extends LinearOpMode
                 rightForkliftMotor.setPower(0);
             }
             else if (gamepad2.a) setCachedForkliftPosition(gamepad2.left_stick_y);
-            else */
-            if (gamepad2.right_trigger == 1)
-            {
-                leftForkliftMotor.setPower(-gamepad2.left_stick_y*.6);
-                rightForkliftMotor.setPower(leftForkliftMotor.getPower());
-            }
+            else if (gamepad2.right_trigger == 1);*/
+            leftForkliftMotor.setPower(-gamepad2.right_stick_y*.5);
+            rightForkliftMotor.setPower(leftForkliftMotor.getPower());
 
         }}).start();
         while (opModeIsActive())
         {
-            leftDriveMotor.setPower(-gamepad1.left_stick_y+gamepad1.left_stick_x);
-            rightDriveMotor.setPower(-gamepad1.left_stick_y-gamepad1.left_stick_x);
+            leftDriveMotor.setPower(-gamepad1.left_stick_y + gamepad1.left_stick_x);
+            rightDriveMotor.setPower(-gamepad1.left_stick_y - gamepad1.left_stick_x);
         }
     }
 }
