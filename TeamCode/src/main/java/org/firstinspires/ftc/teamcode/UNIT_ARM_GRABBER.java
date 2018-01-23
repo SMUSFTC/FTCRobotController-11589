@@ -1,12 +1,14 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.Servo;
 
 /**
  * Created by Adrian on 2018-01-22.
  */
 
+@TeleOp(name = "Arm Grabber", group = "Unit Test")
 public class UNIT_ARM_GRABBER extends LinearOpMode
 {
     Servo leftGrabberHingeServo, rightGrabberHingeServo, leftGrabberClampServo, rightGrabberClampServo;

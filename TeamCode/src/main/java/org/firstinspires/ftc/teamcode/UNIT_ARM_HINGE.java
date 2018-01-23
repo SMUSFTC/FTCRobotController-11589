@@ -24,7 +24,7 @@ public class UNIT_ARM_HINGE extends LinearOpMode
         waitForStart();
         while (opModeIsActive())
         {
-            leftArmHingeMotor.setPower(-gamepad1.left_stick_y * .5);
+            leftArmHingeMotor.setPower(-gamepad1.left_stick_y * .5); // TODO: Adrian, check if offsetting by 0.01 will fix looseness problem.
             rightArmHingeMotor.setPower(leftArmHingeMotor.getPower());
         }
     }
