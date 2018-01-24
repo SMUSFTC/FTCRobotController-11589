@@ -22,7 +22,7 @@ public class MANUAL_CONTROL extends LinearOpMode
         leftDriveMotor = hardwareMap.dcMotor.get("leftDriveMotor");
         rightDriveMotor = hardwareMap.dcMotor.get("rightDriveMotor");
 
-        rightDriveMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+        leftDriveMotor.setDirection(DcMotorSimple.Direction.REVERSE);
 
         leftArmHingeMotor = hardwareMap.dcMotor.get("leftArmHingeMotor");
         rightArmHingeMotor = hardwareMap.dcMotor.get("rightArmHingeMotor");
@@ -38,18 +38,19 @@ public class MANUAL_CONTROL extends LinearOpMode
         rightGrabberHingeServo.setDirection(Servo.Direction.REVERSE);
 
         float powerMultiplier = .3f;
+        boolean previousAButtonValue = false;
 
         waitForStart();
         new Thread(() -> {
             while (opModeIsActive())
             {
-                leftGrabberHingeServo.setPosition(leftGrabberHingeServo.getPosition() - gamepad2.left_stick_y * 0.01f);
+                leftGrabberHingeServo.setPosition(leftGrabberHingeServo.getPosition() + gamepad2.left_stick_y * 0.01f);
                 rightGrabberHingeServo.setPosition(leftGrabberHingeServo.getPosition());
 
                 leftGrabberClampServo.setPosition(leftGrabberClampServo.getPosition() + gamepad2.right_stick_y * 0.01f);
                 rightGrabberClampServo.setPosition(leftGrabberClampServo.getPosition());
 
-                leftArmHingeMotor.setPower((gamepad2.right_trigger - gamepad2.left_trigger) * 0.1f);
+                leftArmHingeMotor.setPower((gamepad2.right_trigger * 1.5 - gamepad2.left_trigger) * 0.1f);
                 rightArmHingeMotor.setPower(leftArmHingeMotor.getPower());
             }
         }).start();
@@ -60,11 +61,13 @@ public class MANUAL_CONTROL extends LinearOpMode
 
             if (gamepad1.dpad_up && Math.abs(powerMultiplier) != 1f)
                 powerMultiplier += .05;
-            else if (gamepad1.dpad_down && Math.abs(powerMultiplier) != 0.5f)
+            else if (gamepad1.dpad_down && Math.abs(powerMultiplier) <= 0.05f)
                 powerMultiplier -= .05;
 
-            if (gamepad1.a)
+            if (gamepad1.a && !previousAButtonValue)
                 powerMultiplier *= -1f;
+
+            previousAButtonValue = gamepad1.a;
         }
     }
 }
