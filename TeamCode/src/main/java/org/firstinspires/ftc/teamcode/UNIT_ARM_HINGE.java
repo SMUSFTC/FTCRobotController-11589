@@ -4,12 +4,13 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.hardware.Gamepad;
 
 /**
  * Created by tianne.lee on 11/6/2017.
  */
 
-@TeleOp(name = "Arm Hinge", group = "Unit Test")
+@TeleOp(name = "[UNIT] Arm Hinge")
 public class UNIT_ARM_HINGE extends LinearOpMode
 {
     DcMotor leftArmHingeMotor, rightArmHingeMotor;
@@ -24,8 +25,9 @@ public class UNIT_ARM_HINGE extends LinearOpMode
         waitForStart();
         while (opModeIsActive())
         {
-            leftArmHingeMotor.setPower(-gamepad1.left_stick_y * .5); // TODO: Adrian, check if offsetting by 0.01 will fix looseness problem.
+            leftArmHingeMotor.setPower(-gamepad1.left_stick_y * .1);
             rightArmHingeMotor.setPower(leftArmHingeMotor.getPower());
+
         }
     }
 }

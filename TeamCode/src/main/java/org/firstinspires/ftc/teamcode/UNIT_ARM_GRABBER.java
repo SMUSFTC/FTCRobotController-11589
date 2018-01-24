@@ -8,7 +8,7 @@ import com.qualcomm.robotcore.hardware.Servo;
  * Created by Adrian on 2018-01-22.
  */
 
-@TeleOp(name = "Arm Grabber", group = "Unit Test")
+@TeleOp(name = "[UNIT] Arm Grabber")
 public class UNIT_ARM_GRABBER extends LinearOpMode
 {
     Servo leftGrabberHingeServo, rightGrabberHingeServo, leftGrabberClampServo, rightGrabberClampServo;
@@ -26,10 +26,10 @@ public class UNIT_ARM_GRABBER extends LinearOpMode
         waitForStart();
         while (opModeIsActive())
         {
-            leftGrabberHingeServo.setPosition(leftGrabberHingeServo.getPosition() + gamepad1.left_stick_y);
+            leftGrabberHingeServo.setPosition(leftGrabberHingeServo.getPosition() + gamepad1.left_stick_y * 0.01);
             rightGrabberHingeServo.setPosition(leftGrabberHingeServo.getPosition());
 
-            leftGrabberClampServo.setPosition(leftGrabberClampServo.getPosition() + gamepad1.right_stick_y);
+            leftGrabberClampServo.setPosition(leftGrabberClampServo.getPosition() + gamepad1.right_stick_y * 0.01);
             rightGrabberClampServo.setPosition(leftGrabberClampServo.getPosition());
         }
     }
