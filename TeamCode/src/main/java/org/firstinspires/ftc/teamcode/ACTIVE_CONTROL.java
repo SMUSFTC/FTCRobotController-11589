@@ -12,7 +12,7 @@ import com.qualcomm.robotcore.hardware.Servo;
  */
 
 @TeleOp(name = "[ACTIVE] Control")
-public class MANUAL_CONTROL extends LinearOpMode
+public class ACTIVE_CONTROL extends LinearOpMode
 {
     DcMotor leftDriveMotor, rightDriveMotor, leftArmHingeMotor, rightArmHingeMotor;
     Servo leftGrabberHingeServo, rightGrabberHingeServo, leftGrabberClampServo, rightGrabberClampServo;
