@@ -40,6 +40,9 @@ public class ACTIVE_CONTROL extends LinearOpMode
         float powerMultiplier = .3f;
         boolean previousAButtonValue = false;
 
+        boolean previousDpadUpValue = false;
+        boolean previousDpadDownValue = false;
+
         waitForStart();
         new Thread(() -> {
             while (opModeIsActive())
@@ -59,15 +62,21 @@ public class ACTIVE_CONTROL extends LinearOpMode
             leftDriveMotor.setPower(powerMultiplier * (-gamepad1.left_stick_y + gamepad1.left_stick_x));
             rightDriveMotor.setPower(powerMultiplier * (-gamepad1.left_stick_y - gamepad1.left_stick_x));
 
-            if (gamepad1.dpad_up && Math.abs(powerMultiplier) != 1f)
+            if (gamepad1.dpad_up && !previousDpadUpValue && Math.abs(powerMultiplier) <= 1f)
                 powerMultiplier += .05;
-            else if (gamepad1.dpad_down && Math.abs(powerMultiplier) <= 0.05f)
+
+            if (gamepad1.dpad_down && !previousDpadDownValue && Math.abs(powerMultiplier) >= 0.1f)
                 powerMultiplier -= .05;
+
+            telemetry.addLine("Power Multiplier: " + powerMultiplier);
 
             if (gamepad1.a && !previousAButtonValue)
                 powerMultiplier *= -1f;
 
             previousAButtonValue = gamepad1.a;
+            previousDpadDownValue = gamepad1.dpad_down;
+            previousDpadUpValue = gamepad1.dpad_up;
+            telemetry.update();
         }
     }
 }
